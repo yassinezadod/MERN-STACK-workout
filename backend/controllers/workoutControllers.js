@@ -29,6 +29,20 @@ const getSingleWorkout = async (req, res) => {
 
 const createWorkout = async (req, res) => {
     const {title, reps, load} = req.body
+    let emptyField=[]
+    if(!title){
+        emptyField.push('title')
+    }
+    if(!reps){
+        emptyField.push('reps')
+    }
+    if(!load){
+        emptyField.push('load')
+    }
+    if(emptyField.length>0){
+        return res.status(400).json({err: `Please enter ${emptyField.join(', ')}`})
+    }
+    
 
     try {
         const workout = await WorKout.create({title, reps, load})
