@@ -21,9 +21,15 @@ const Home = () => {
         console.error("Failed to fetch workouts", res.status);
       }
     };
+    
 
     fetchWorkouts();
   }, [dispatch]); // 'dispatch' est une dépendance de useEffect
+  
+
+
+
+  
 
   return (
     <div className="home">
